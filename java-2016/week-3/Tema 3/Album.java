@@ -10,6 +10,7 @@ public class Album {
    private String quality;
    private String pageNumber;
   
+    // CODE REVIEW - Since when does an album read a user input? Does the real-life object do this?
    static Scanner userInput = new Scanner(System.in);
    
  //Constructor for the Album
@@ -24,6 +25,7 @@ public class Album {
   //Public methods for Title, Quality, Page Number
   
     public String getTitle(){  
+        // CODE REVIEW - if every time you call this method, you force the user to input a value, this object is basically stateless and has no value.
 	System.out.println("Enter the title of the art album: ");
     title = userInput.nextLine();
 	return title; 

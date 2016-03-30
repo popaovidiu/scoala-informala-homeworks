@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Library {
    
    
-    
+    // CODE REVIE - all class member names have to be camelCased!
 	ArrayList<String> library_books = new ArrayList<String>(); 
 	ArrayList<String> library_albums = new ArrayList<String>(); 
 	Novel dummy_novel = new Novel("","","");
