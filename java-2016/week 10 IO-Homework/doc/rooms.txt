@@ -1,0 +1,1 @@
+room1,SINGLE,Camera cu vedere la mare prima,1,QEEN_SIZE,100,room2,DOUBLE,Camera cu vedere la mare 2,2,KING_SIZE,110,room3,SINGLE,Camera cu vedere la vale 3,3,SINGLE,120,room4,DOUBLE,Camera cu vedere la mare 4,4,KONG_SIZE,130

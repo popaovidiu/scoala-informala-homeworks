@@ -1,0 +1,1 @@
+room1,SINGLE,Camera cu vedere la mare prima,1,QEEN_SIZE,100.0,2016-04-01,2016-04-02,
