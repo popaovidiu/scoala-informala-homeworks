@@ -70,7 +70,9 @@ public class TestCancelBooking {
 
 		booking = new ArrayList<Booking>();
 		booking.add(new Booking(room1, period));
-
+		
+		//asta nu e ok, nu prea imi dau seama ce ai incercat sa faci
+		//intelegem printr-un booking view un booking
 		bookingView = new ArrayList<>();
 		bookingView.add(booking.get(0));
 		bookingView.add(bookingId.getBookingId());
