@@ -1,0 +1,41 @@
+package ro.sci.java.cardealership;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+
+import main.ro.sci.cardealership.Car;
+import ro.sci.java.cardealership.clients.Client;
+
+public class CarDealership {
+
+	
+	private String dealershipName;
+	private HashSet<Car> carsInStock = new HashSet<>();
+	private HashMap<String, Float> priceCatalog = new HashMap();
+	private BankAccount bankAccount;
+
+	public CarDealership(String dealershipName){
+		this.dealershipName = dealershipName;
+	}
+
+	public void addToStock(Car car, float price) {
+		carsInStock.add(car);
+		priceCatalog.put(car.getChassisNumber(), price);
+		
+	}
+
+	public List<Car> listAllCars() {
+		return new ArrayList<Car>(carsInStock);
+	}
+
+	public void sellCarToClient(Client client, Car fiesta) {
+		if (carsInStock.contains(fiesta)){
+			carsInStock.remove(fiesta);
+			client.getBankAccount().trasferOfFunds(priceCatalog.get(fiesta.getChassisNumber()),bankAccount);
+		}
+		
+	}
+	
+}

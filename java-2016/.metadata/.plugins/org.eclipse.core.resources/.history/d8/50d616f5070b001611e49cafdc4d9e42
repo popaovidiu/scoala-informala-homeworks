@@ -1,0 +1,5 @@
+package main.ro.sci.cardealership;
+
+public class InsufficientFundsException extends Exception {
+
+}

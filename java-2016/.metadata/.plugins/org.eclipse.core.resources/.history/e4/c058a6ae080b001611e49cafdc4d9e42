@@ -1,0 +1,17 @@
+package ro.sci.java.cardealership.BankINC;
+
+public class BankAccount {
+
+	private String iban;
+	private float balance;
+	
+	public BankAccount(String iban, float balance) {
+		super();
+		this.iban = iban;
+		this.balance = balance;
+	}
+	
+	
+	
+	
+}

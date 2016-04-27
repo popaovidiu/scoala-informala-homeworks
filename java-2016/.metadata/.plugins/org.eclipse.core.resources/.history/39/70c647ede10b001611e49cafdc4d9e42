@@ -1,0 +1,5 @@
+package ro.sci.java.cardealership;
+
+public class ClientDoesNotHaveBankAccount extends Exception {
+
+}

@@ -1,0 +1,33 @@
+package ro.sci.java.cardealership.BankINC;
+
+import ro.sci.java.cardealership.InsufficientFundsException;
+
+public class BankAccount {
+
+	private String iban;
+	protected float balance;
+
+	public BankAccount(String iban, float balance) {
+		super();
+		this.iban = iban;
+		this.balance = balance;
+	}
+
+	public void transferFunds(Float amount, BankAccount destinationAccount) throws InsufficientFundsException {
+		if (balance < amount) {
+			throw new InsufficientFundsException();
+		}
+		balance -= amount;
+		destinationAccount.balance += amount;
+	}
+	
+	public void transferFundsFromCarDealershipToClient(Float amount, BankAccount destinationAccount) throws InsufficientFundsException {
+		if (balance < amount) {
+			//System.out.println("a ajuns aici");
+			throw new InsufficientFundsException();
+		}
+		balance += amount;
+		destinationAccount.balance -= amount;
+	}
+
+}
