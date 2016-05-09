@@ -39,18 +39,21 @@ import main.ro.sci.booking.SeasonType;
  *
  */
 
-public class TestBookingSaveAndLoadToFile {
+public class TestBookingSaveAndLoadToFile extends AbstractBookingTest {
 
+	//TODO why do you need these ?
 	private static final OpenOption CREATE = null;
 	private static final OpenOption APPEND = null;
 	private static String ROOMS_FILE_PATH = "C:\\Users\\Petronia\\Desktop\\booking\\doc\\rooms.txt";
 	private static String BOOKING_FILE_PATH = "C:\\Users\\Petronia\\Desktop\\booking\\doc\\booking.txt";
 	private static String BOOKING_PERIODS_FILE_PATH = "C:\\Users\\Petronia\\Desktop\\booking\\doc\\bookingperiods.txt";
+	//TODO add visibility modifier for these
 	ArrayList<Accommodation> rooms = new ArrayList<>();
 	String line;
 	ArrayList<Object> bookingView = new ArrayList<>();
 	ArrayList<Object> bookingPeriod = new ArrayList<>();
 	ArrayList<Object> bookingCheck = new ArrayList<>();
+	//TODO field names should be nouns
 	private Scanner readFromFile;
 	private Scanner readFromFile2;
 
@@ -88,6 +91,7 @@ public class TestBookingSaveAndLoadToFile {
 
 		BufferedWriter writer = new BufferedWriter(
 				new FileWriter("C:\\Users\\Petronia\\Desktop\\booking\\doc\\booking.txt"));//wrinting booking to file
+		//TODO extract the file path as a constant
 		String room = (String) bookingView.get(0);
 		String roomType = (String) bookingView.get(1);
 		String roomDescription = (String) bookingView.get(2);

@@ -20,7 +20,7 @@ import main.ro.sci.booking.RoomFair;
 import main.ro.sci.booking.Season;
 import main.ro.sci.booking.SeasonType;
 
-public class TestAvailability {
+public class TestAvailability extends AbstractBookingTest {
 
 	List<Accommodation> rooms;
 
@@ -80,35 +80,6 @@ public class TestAvailability {
 		return found;
 	}
 
-	private Accommodation createNewRoom(AccommodationType type, RoomFair fair) {
-		Accommodation accomodation = new Accommodation();
-		accomodation.setType(type);
-		accomodation.setFair(fair);
-		return accomodation;
-	}
 
-	private RoomFair createRoomFair(int i, Season season) {
-		RoomFair roomFair = new RoomFair();
-		roomFair.setSeason(season);
-		roomFair.setValue(i);
-		return roomFair;
-	}
-
-	private Season createSeason(SeasonType type, Date from, Date to) {
-		Season season = new Season();
-		season.setFrom(from);
-		season.setTo(to);
-		season.setType(type);
-		return season;
-	}
-
-	private Date getDate(int year, int month, int day) {
-		Calendar c = Calendar.getInstance();
-		c.set(Calendar.YEAR, year);
-		c.set(Calendar.MONTH, month);
-		c.set(Calendar.DAY_OF_MONTH, day);
-
-		return c.getTime();
-	}
 
 }

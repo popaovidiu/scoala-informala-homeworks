@@ -1,46 +1,33 @@
 package test.ro.sci.booking;
 
-import static org.junit.Assert.*;
-
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 import javax.naming.directory.InvalidAttributeIdentifierException;
 
 import org.junit.Test;
 
-import exception.ro.sci.booking.IllegalFormatInputDateException;
-import exception.ro.sci.booking.InvalidAttributeIdentiefierException;
 import main.ro.sci.booking.Accommodation;
+
 /**
  * Test that rooms are correct read from file
+ * 
  * @author Ovidiu Popa
  *
  */
-public class TestRoomsAreCorrectedReadFromFile {
+public class TestRoomsAreCorrectedReadFromFile extends AbstractBookingTest {
 
 	private static String ROOMS_FILE_PATH = "C:\\Users\\Petronia\\Desktop\\booking\\doc\\rooms.txt";
 	ArrayList<Accommodation> rooms = new ArrayList<>();
 	String line;
 
-	
 	@Test
 	public void testReadRoomDataFromFilePozitive() throws InvalidAttributeIdentifierException, IOException {
-		Path file = Paths.get(ROOMS_FILE_PATH);//read room from file
+		Path file = Paths.get(ROOMS_FILE_PATH);// read room from file
 		try {
 			Scanner readFromFile = new Scanner(file);
 			readFromFile.useDelimiter(",");
@@ -64,10 +51,6 @@ public class TestRoomsAreCorrectedReadFromFile {
 		}
 
 	}
-	
-	
-	
-	
 
 	private Accommodation createAccommodation(String line) throws InvalidAttributeIdentifierException {
 		Accommodation room = new Accommodation();
@@ -79,6 +62,4 @@ public class TestRoomsAreCorrectedReadFromFile {
 		return room;
 	}
 
-		
-	
 }

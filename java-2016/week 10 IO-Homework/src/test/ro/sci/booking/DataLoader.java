@@ -19,6 +19,7 @@ import org.junit.Test;
 import main.ro.sci.booking.Accommodation;
 import main.ro.sci.booking.BookingPeriod;
 
+//TODO this is an utility class, not a test class, @Test methods should be in Test specific classes
 public class DataLoader {
 
 	private static String ROOMS_FILE_PATH = "C:\\Users\\Petronia\\Desktop\\booking\\doc\\rooms.txt";
@@ -35,6 +36,7 @@ public class DataLoader {
 		readFileAccommodation(file, rooms);
 		Path fileOut = Paths.get(BOOKING_FILE_PATH);
 		writeFile(fileOut);
+		//TODO where is the assertion? every test should check something
 	}
 
 	@Test
@@ -43,7 +45,7 @@ public class DataLoader {
 		List<BookingPeriod> bookingperiods = new ArrayList<>();
 		Path file1 = Paths.get(BOOKING_PERIODS_FILE_PATH);
 		readFileBookingPeriods(file1, bookingperiods);
-
+//TODO where is the assertion? every test should check something
 	}
 
 	public void readFileAccommodation(Path file, List<Accommodation> rooms) throws InvalidAttributeIdentifierException {

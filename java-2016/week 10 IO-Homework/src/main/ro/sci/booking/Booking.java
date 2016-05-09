@@ -7,6 +7,7 @@ public class Booking {
 
 	private Accommodation room;
 	private BookingPeriod bookingPeriod;
+	//TODO declare the below fields and create getters and setters for them
 	// customer
 	// id
 	// price
