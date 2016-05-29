@@ -1,0 +1,77 @@
+package ro.sci.DBTests;
+
+import ro.sci.booking.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DBTests {
+
+	public static void main(String[] args) {
+
+		try {
+			Class.forName("org.postgresql.Driver").newInstance();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		
+		
+		Connection conn = connect("postgresql", "localhost", 5432, "booking", "postgres", "q1w2e3r4");
+		if (conn == null) return;
+		
+		PreparedStatement ps = null;
+
+		
+		ResultSet rs = null;
+		final String format = "%20s%20s%12s\n";
+		try {
+			
+			
+		    String sqlQuery = "select * from customer where id>? and \"firstName\"=?";
+			ps = conn.prepareStatement(sqlQuery);
+		    ps.setInt(1, 2);
+		    ps.setString(2, "gigi");
+
+		    rs = ps.executeQuery();
+		    
+		    boolean hasResults = rs.next();
+		    if (hasResults) {
+		        System.out.format(format, "firstName", "email", "lastName");
+		        do {
+		            System.out.format(format, rs.getString("firstName"), rs.getString("email"), rs.getString("lastName"));
+		        } while (rs.next());
+		    } else {
+		        System.out.println("No results");
+		    }
+		} catch (SQLException e) {
+		    System.err.println("Cannot execute query: " + e.getMessage());
+		} finally {
+		    if (rs != null) try { rs.close(); } catch (SQLException e) {  }
+		    if (ps != null) try { ps.close(); } catch (SQLException e) {  }
+		    try { conn.close(); } catch (SQLException e) { }
+		}
+	}
+
+	private static Connection connect(String type, String host, int port, String dbName, String user, String pw) {
+
+		Connection conn = null;
+		DriverManager.setLoginTimeout(60);
+		try {
+			String url = new StringBuilder().append("jdbc:").append(type) 
+					.append("://").append(host).append(":").append(port).append("/").append(dbName).append("?user=")
+					.append(user).append("&password=").append(pw).toString();
+			
+			System.out.println("URL:" + url);
+			conn = DriverManager.getConnection(url);
+		} catch (SQLException e) {
+			System.err.println("Cannot connect to the database: " + e.getMessage());
+		}
+
+		return conn;
+	}
+
+}

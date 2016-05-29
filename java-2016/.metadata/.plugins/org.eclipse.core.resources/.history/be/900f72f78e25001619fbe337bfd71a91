@@ -1,0 +1,9 @@
+package ro.sci.DBTests;
+
+public interface DbContract {
+    public static final String HOST = "jdbc:postgresql://localhost:5432/";
+    public static final String DB_NAME = "bookings";
+    public static final String USERNAME = "postgres";
+    public static final String PASSWORD = "q1w2e3r4";
+
+}
