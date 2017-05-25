@@ -1,0 +1,65 @@
+package ro.sci.DBTests;
+
+public class TestSelect {
+	
+	
+	
+	
+	
+	public void testSelect1() {
+
+		PreparedStatement statment = null;
+		ResultSet resultSet = null;
+
+		final String format = "%10s\n";
+
+		try {
+			String sqlStatemant = "select value from accomodation_fair_relation inner join room_fair on accomodation_fair_relation.id_room_fair=room_fair.id;";
+			statment = conn.prepareStatement(sqlStatemant);
+
+			resultSet = statment.executeQuery();
+
+			boolean hasResults = resultSet.next();
+
+			if (hasResults) {
+				System.out.format(format, "prices of rooms");
+
+				do {
+					System.out.format(format, resultSet.getFloat("value"));
+
+					// adding the prices from db in list
+					prices.add(resultSet.getFloat("value"));
+
+				} while (resultSet.next());
+
+			} else {
+				System.out.println("No results");
+			}
+
+		} catch (SQLException e) {
+			System.err.println("Cannot execute query: " + e.getMessage());
+
+		} finally {
+			if (resultSet != null)
+				try {
+					resultSet.close();
+				} catch (SQLException e) {
+				}
+			if (statment != null)
+				try {
+					statment.close();
+				} catch (SQLException e) {
+				}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+
+		// test if the data from db is the expected one
+		assertEquals(120, prices.get(0), 0);
+		assertEquals(180, prices.get(1), 0);
+		assertEquals(100, prices.get(2), 0);
+
+	}
+}

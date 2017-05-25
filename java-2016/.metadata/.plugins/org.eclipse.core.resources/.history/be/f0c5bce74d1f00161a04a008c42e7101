@@ -1,0 +1,6 @@
+package ro.sci.DBTests;
+
+public enum SeasonType {
+
+	HIGH, MID, LOW;
+}

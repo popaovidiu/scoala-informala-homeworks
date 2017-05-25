@@ -1,0 +1,32 @@
+
+package ro.sci.DBTests;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import ro.sci.DBTests.DbContract;
+import ro.sci.DBTests.PostgresHelper;
+
+public class Main {
+	private PostgresHelper client;
+
+	public static void main(String[] args) throws SQLException {
+		PostgresHelper client = new PostgresHelper(DbContract.HOST, DbContract.DB_NAME, DbContract.USERNAME,
+				DbContract.PASSWORD);
+
+		try {
+			if (client.connect()) {
+				System.out.println("DB connected");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		ResultSet rs = client.execQuery("SELECT * FROM accomodation");
+
+		while (rs.next()) {
+
+			System.out.printf("%d\t%s\t%s\t%d\n", rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+					rs.getString(5));
+		}
+	}
+}
